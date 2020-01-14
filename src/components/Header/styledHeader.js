@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
     width: 100%;
-    padding: 22px;
+    padding: 22px 0px;
     background-color: #20639B;
     color: white;
     border-top: 10px solid #173F5F;

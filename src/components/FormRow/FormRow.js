@@ -1,6 +1,6 @@
 import React from 'react';
 import { useField, Field } from "formik";
-import { RowContaniner, RowTitle, RowError, Text, Input } from './styledFormRow';
+import { RowContaniner, RowTitle, RowError, Input } from './styledFormRow';
 
 const FormRow = (props) => {
     const [field, meta] = useField(props);
@@ -12,9 +12,8 @@ const FormRow = (props) => {
                 {rowName.toUpperCase()}
             </RowTitle>
             <Field placeholder={placeholder} name={inputName} type={inputType} as={Input} {...field}/>
-            <RowError>
-                {meta.touched && meta.error ? <Text color="red">{meta.error}</Text> : null}
-            </RowError>
+            {meta.touched && meta.error ? <RowError>{meta.error}</RowError> : null}
+            
         </RowContaniner>
     );
 }

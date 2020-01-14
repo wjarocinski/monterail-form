@@ -1,8 +1,10 @@
 import React from "react";
-import { Formik, Form } from "formik"
+import { Formik } from "formik"
 import validationSchema from "../validation";
 import FormRow from "../components/FormRow/FormRow";
 import FormTile from "../components/FormTile/FormTile";
+
+import { Form } from "../themes";
 
 const initialValues = {
     //About
@@ -24,9 +26,8 @@ const Home = () => {
     return (
         <Formik
         initialValues={initialValues}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         onSubmit={(values, {setSubmitting}) => {
-            console.log("submit")
           setSubmitting(true);
           //make async call or just console.log the values
           console.log(values);
@@ -36,14 +37,25 @@ const Home = () => {
           isSubmitting,
           touched,
           errors,
+          handleChange,
+          handleBlur,
           handleSubmit
         }) => (
-          <Form>
-            <FormTile tileName="Coordinator">
-                <FormRow rowName="Responsible" placeholder="Responsible" name="coordinator" type="text"/>
-                <FormRow rowName="Duration" placeholder="Email" name="email" type="email"/>
+            <Form onSubmit={handleSubmit}>
+            <FormTile tileName="About">
+                <FormRow rowName="Title *" placeholder="Make it short and clear" name="title" type="text"/>
+                <FormRow rowName="Description *" placeholder="Write about your event, be creative" name="description" type="textarea"/>
+                <FormRow rowName="Category" placeholder="Select category (skills, interests, locations)" name="category" type="select"/>
             </FormTile>
-            <button type="submit">Submit</button>
+            <FormTile tileName="Coordinator">
+                <FormRow rowName="Responsible *" placeholder="Responsible" name="coordinator" type="text"/>
+                <FormRow rowName="Email" placeholder="Email" name="email" type="email"/>
+            </FormTile>
+            <FormTile tileName="When">
+                <FormRow rowName="Starts On" name="date" type="date"/>
+                <FormRow rowName="Duration" placeholder="Number" name="duration" type="number"/>
+            </FormTile>
+            <button disbaled={isSubmitting} type="submit">Submit</button>
           </Form>
         )}
       </Formik>
