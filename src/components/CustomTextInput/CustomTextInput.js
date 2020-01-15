@@ -4,7 +4,7 @@ import { InputContaniner, InputLabel, InputError, Input } from './styledCustomTe
 
 const CustomTextInput = (props) => {
     const [field, meta] = useField(props);
-    const { inputLabel, inputName, inputType, placeholder } = props;
+    const { inputLabel, placeholder } = props;
 
     const hasError = meta.touched && meta.error;
 
@@ -13,7 +13,7 @@ const CustomTextInput = (props) => {
             <InputLabel color={hasError ? "red": null}>
                 {inputLabel.toUpperCase()}
             </InputLabel>
-            <Field placeholder={placeholder} name={inputName} border={hasError ? "1px solid red": null} type={inputType} as={Input} {...field}/>
+            <Field placeholder={placeholder} border={hasError ? "1px solid red": null} as={Input} {...field}/>
             {hasError ? <InputError>{meta.error}</InputError> : null}
             
         </InputContaniner>

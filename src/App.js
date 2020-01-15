@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <>
       <Header/>
-      {/* <Home /> */}
-      <Success/>
+      <Home />
+      {/* <Success/> */}
     </>
     )
   }

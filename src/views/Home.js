@@ -6,6 +6,7 @@ import categories from "../mocks/categories.json";
 import CustomTextInput from "../components/CustomTextInput/CustomTextInput";
 import FormTile from "../components/FormTile/FormTile";
 import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput";
+import TextArea from "../components/TextArea/TextArea";
 
 import { Form, Button } from "../themes";
 
@@ -46,9 +47,9 @@ const Home = () => {
         }) => (
             <Form onSubmit={handleSubmit}>
             <FormTile tileName="About">
-                <CustomTextInput inputLabel="Title *" placeholder="Make it short and clear" name="title" type="text"/>
-                <CustomTextInput inputLabel="Description *" placeholder="Write about your event, be creative" name="description" type="textarea"/>
-                <CustomSelectInput name="category_id" inputLabel="Category" placeholder="Select category (skills, interests, locations)" optionValues={categories}/>
+                <CustomTextInput inputLabel="Title *" name="title" placeholder="Make it short and clear" />
+                <TextArea textAreaLabel="Description" name="description" placeholder="Write about your event, be creative"/>
+                <CustomSelectInput inputLabel="Category" name="category_id" placeholder="Select category (skills, interests, locations)" optionValues={categories}/>
             </FormTile>
             <FormTile tileName="Coordinator">
                 <CustomTextInput inputLabel="Responsible *" placeholder="Responsible" name="coordinator" type="text"/>
