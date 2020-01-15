@@ -4,7 +4,7 @@ import { TextAreaContaniner, TextAreaLabel, TextAreaError, sTextArea } from './s
 
 const TextArea = (props) => {
     const [field, meta] = useField(props);
-    const { textAreaLabel, textAreaName, placeholder } = props;
+    const { textAreaLabel, placeholder } = props;
 
     const hasError = meta.touched && meta.error;
 
@@ -14,7 +14,7 @@ const TextArea = (props) => {
                 {textAreaLabel.toUpperCase()}
             </TextAreaLabel>
             <Field placeholder={placeholder} border={hasError ? "1px solid red": null} as={sTextArea} {...field}/>
-            {/* {hasError ? <TextAreaError>{meta.error}</TextAreaError> : null} */}
+            {hasError ? <TextAreaError>{meta.error}</TextAreaError> : null}
         </TextAreaContaniner>
     );
 }
