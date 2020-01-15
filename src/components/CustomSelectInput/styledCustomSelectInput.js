@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const RowContaniner = styled.div`
+const SelectContaniner = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   padding: 10px 0;
 `;
-const RowTitle = styled.div`
+const SelectLabel = styled.div`
     width: 15%;
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@ const RowTitle = styled.div`
     color: ${props => props.color || '#173F5F'};
 `;
 
-const RowError = styled.div`
+const SelectError = styled.div`
     margin-left: 25px;
     padding: 6px;
     height: 20px;
@@ -40,14 +40,14 @@ const RowError = styled.div`
   }
 `;
 
-const Input = styled.input`
-  width: 60%;
+const Select = styled.select`
+  width: 62%;
   opacity: 0.7;
-  height: 30px;
+  height: 42px;
   border-radius: 3px;
   border: ${props => props.border || '1px solid #ccc'};
   background-color: #fff;
   padding: 5px 8px;
 `;
 
-export { RowContaniner, RowTitle, RowError, Input };
+export { SelectContaniner, SelectLabel, SelectError, Select };

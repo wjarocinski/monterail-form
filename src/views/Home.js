@@ -1,8 +1,11 @@
 import React from "react";
 import { Formik } from "formik"
 import validationSchema from "../validation";
-import FormRow from "../components/FormRow/FormRow";
+import categories from "../mocks/categories.json";
+
+import CustomTextInput from "../components/CustomTextInput/CustomTextInput";
 import FormTile from "../components/FormTile/FormTile";
+import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput";
 
 import { Form, Button } from "../themes";
 
@@ -10,16 +13,16 @@ const initialValues = {
     //About
     title: "", 
     description: "", 
-    category_id: null,
+    category_id: "",
     paid_event: false,
-    event_fee: null,
-    reward: null,
+    event_fee: "",
+    reward: "",
     //Coordinator 
     coordinator: "",
     email: "",
     //When
     date: "",
-    duration: null
+    duration: ""
   };
 
 const Home = () => {
@@ -43,17 +46,17 @@ const Home = () => {
         }) => (
             <Form onSubmit={handleSubmit}>
             <FormTile tileName="About">
-                <FormRow rowName="Title *" placeholder="Make it short and clear" name="title" type="text"/>
-                <FormRow rowName="Description *" placeholder="Write about your event, be creative" name="description" type="textarea"/>
-                <FormRow rowName="Category" placeholder="Select category (skills, interests, locations)" name="category" type="select"/>
+                <CustomTextInput inputLabel="Title *" placeholder="Make it short and clear" name="title" type="text"/>
+                <CustomTextInput inputLabel="Description *" placeholder="Write about your event, be creative" name="description" type="textarea"/>
+                <CustomSelectInput name="category_id" inputLabel="Category" placeholder="Select category (skills, interests, locations)" optionValues={categories}/>
             </FormTile>
             <FormTile tileName="Coordinator">
-                <FormRow rowName="Responsible *" placeholder="Responsible" name="coordinator" type="text"/>
-                <FormRow rowName="Email" placeholder="Email" name="email" type="email"/>
+                <CustomTextInput inputLabel="Responsible *" placeholder="Responsible" name="coordinator" type="text"/>
+                <CustomTextInput inputLabel="Email" placeholder="Email" name="email" type="email"/>
             </FormTile>
             <FormTile tileName="When">
-                <FormRow rowName="Starts On" name="date" type="date"/>
-                <FormRow rowName="Duration" placeholder="Number" name="duration" type="number"/>
+                <CustomTextInput inputLabel="Starts On" name="date" type="date"/>
+                <CustomTextInput inputLabel="Duration" placeholder="Number" name="duration" type="number"/>
             </FormTile>
             <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>
           </Form>
