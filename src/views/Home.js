@@ -4,7 +4,7 @@ import validationSchema from "../validation";
 import FormRow from "../components/FormRow/FormRow";
 import FormTile from "../components/FormTile/FormTile";
 
-import { Form } from "../themes";
+import { Form, Button } from "../themes";
 
 const initialValues = {
     //About
@@ -55,7 +55,7 @@ const Home = () => {
                 <FormRow rowName="Starts On" name="date" type="date"/>
                 <FormRow rowName="Duration" placeholder="Number" name="duration" type="number"/>
             </FormTile>
-            <button disbaled={isSubmitting} type="submit">Submit</button>
+            <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>
           </Form>
         )}
       </Formik>

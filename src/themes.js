@@ -7,6 +7,7 @@ export const Form = styled.form`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 `;
 
 export const Input = styled.input`
@@ -17,12 +18,15 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  width: 300px;
-  height: 35px;
-  background-color: #5995ef;
+  padding: 15px 30px;
+  background-color: orange;
   color: #fff;
   border: none;
-  border-radius: 3px;
+  border-radius: 2px;
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
 `;
 
 // Text

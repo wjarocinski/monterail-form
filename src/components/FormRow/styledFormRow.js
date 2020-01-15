@@ -10,7 +10,8 @@ const RowTitle = styled.div`
     width: 15%;
     display: flex;
     align-items: center;
-    color: #173F5F;
+    opacity: 0.7;
+    color: ${props => props.color || '#173F5F'};
 `;
 
 const RowError = styled.div`
@@ -41,10 +42,12 @@ const RowError = styled.div`
 
 const Input = styled.input`
   width: 60%;
+  opacity: 0.7;
   height: 30px;
+  border-radius: 3px;
   border: ${props => props.border || '1px solid #ccc'};
   background-color: #fff;
-  padding: 5px;
+  padding: 5px 8px;
 `;
 
 export { RowContaniner, RowTitle, RowError, Input };

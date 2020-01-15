@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const TileContainer = styled.div`
-  width: 80%;
+  width: 70%;
   padding: 20px 40px;
   margin: 20px;
   display: flex;
@@ -9,7 +9,7 @@ const TileContainer = styled.div`
   align-items: center;
   border: none;
   border-radius: 3px;
-  box-shadow: 0px 0px 2px 1px rgba(161,161,161,1);
+  box-shadow: 0px 0px 3px 1px rgba(200,200,200,1);
   background-color: #fff;
 `;
 
