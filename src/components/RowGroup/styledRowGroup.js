@@ -40,14 +40,14 @@ const RadioGroupError = styled.div`
   }
 `;
 
-const RadioButton = styled.input`
-  width: 60%;
-  opacity: 0.7;
-  height: 30px;
-  border-radius: 3px;
-  border: ${props => props.border || '1px solid #ccc'};
-  background-color: #fff;
-  padding: 5px 8px;
-`;
+// const RadioButton = styled.input`
+//   width: 60%;
+//   opacity: 0.7;
+//   height: 30px;
+//   border-radius: 3px;
+//   border: ${props => props.border || '1px solid #ccc'};
+//   background-color: #fff;
+//   padding: 5px 8px;
+// `;
 
-export { RadioGroupContaniner, RadioGroupLabel, RadioGroupError, RadioButton };
+export { RadioGroupContaniner, RadioGroupLabel, RadioGroupError };

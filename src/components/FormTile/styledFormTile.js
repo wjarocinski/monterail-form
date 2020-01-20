@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const TileContainer = styled.div`
-  width: 70%;
+  width: 60%;
   padding: 20px 40px;
   margin: 20px;
   display: flex;

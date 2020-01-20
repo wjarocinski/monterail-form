@@ -2,15 +2,17 @@ import React from "react";
 import { Formik } from "formik"
 import validationSchema from "../validation";
 import categories from "../mocks/categories.json";
+import employees from "../mocks/employes.json";
 
 import CustomTextInput from "../components/CustomTextInput/CustomTextInput";
 import FormTile from "../components/FormTile/FormTile";
 import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput";
 import TextArea from "../components/TextArea/TextArea";
-import RadioGroup from "../components/RadioGroup/RadioGroup";
 import InputWithAnnotation from "../components/InputWithAnnotation/InputWithAnnotation";
 
 import { Form, Button } from "../themes";
+import Radio from "../components/Radio/Radio";
+import RowGroup from "../components/RowGroup/RowGroup";
 
 const initialValues = {
     //About
@@ -52,17 +54,17 @@ const Home = () => {
                 <CustomTextInput inputLabel="Title *" name="title" placeholder="Make it short and clear" />
                 <TextArea textAreaLabel="Description" name="description" placeholder="Write about your event, be creative"/>
                 <CustomSelectInput inputLabel="Category" name="category_id" placeholder="Select category (skills, interests, locations)" optionValues={categories}/>
-                {/* <RadioGroup radioGroupLabel="Payment"/> */}
-                {/* moze po prostu radiobutton tyle razy ile jest tutaj podany */}
-                {/* ale to i tak trzeba go w cos zamknac i dac mu label */}
+                <Radio name="paid_event" radioLabel="Free event" value="free"/>
+                <Radio name="paid_event" radioLabel="Paid event" value="paid"/>
+
                 <InputWithAnnotation inputLabel="Reward" name="reward" placeholder="Number" annotation="reward points for attendance"/>
             </FormTile>
             <FormTile tileName="Coordinator">
-                <CustomTextInput inputLabel="Responsible *" placeholder="Responsible" name="coordinator" type="text"/>
+                <CustomSelectInput inputLabel="Responsible *" name="coordinator" placeholder="Responsible" optionValues={employees}/>
                 <CustomTextInput inputLabel="Email" placeholder="Email" name="email" type="email"/>
             </FormTile>
             <FormTile tileName="When">
-                <CustomTextInput inputLabel="Starts On" name="date" type="date"/>
+                <CustomTextInput inputLabel="Starts On" name="date" type="date" />
                 <InputWithAnnotation inputLabel="Duration" name="duration" placeholder="Number" annotation="hour"/>
             </FormTile>
             <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>

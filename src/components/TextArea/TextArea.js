@@ -13,7 +13,7 @@ const TextArea = (props) => {
             <TextAreaLabel color={hasError ? "red": null}>
                 {textAreaLabel.toUpperCase()}
             </TextAreaLabel>
-            <Field placeholder={placeholder} border={hasError ? "1px solid red": null} as={sTextArea} {...field}/>
+            <Field placeholder={placeholder} border={hasError ? "1px solid red": null} as={sTextArea} rows="8" {...field}/>
             {hasError ? <TextAreaError>{meta.error}</TextAreaError> : null}
         </TextAreaContaniner>
     );

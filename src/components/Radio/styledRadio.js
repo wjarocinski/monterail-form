@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const TextAreaContaniner = styled.div`
+const RadioGroupContaniner = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   padding: 10px 0;
 `;
-const TextAreaLabel = styled.div`
+const RadioGroupLabel = styled.div`
     width: 15%;
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@ const TextAreaLabel = styled.div`
     color: ${props => props.color || '#173F5F'};
 `;
 
-const TextAreaError = styled.div`
+const RadioGroupError = styled.div`
     margin-left: 25px;
     padding: 6px;
     height: 20px;
@@ -40,14 +40,17 @@ const TextAreaError = styled.div`
   }
 `;
 
-const sTextArea = styled.textarea`
-  width: 60%;
-  opacity: 0.7;
-  font-size: 14px;
-  border-radius: 3px;
-  border: ${props => props.border || '1px solid #ccc'};
-  background-color: #fff;
-  padding: 5px 8px;
+const RadioButton = styled.input`
+
 `;
 
-export { TextAreaContaniner, TextAreaLabel, TextAreaError, sTextArea };
+const RadioLabel = styled.p`
+  font-size: 16px;
+  color: black;
+`;
+
+const RadioContainer = styled.div`
+  display: flex;
+`;
+
+export { RadioGroupContaniner, RadioGroupLabel, RadioGroupError, RadioButton, RadioLabel, RadioContainer };
