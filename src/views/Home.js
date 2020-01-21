@@ -40,6 +40,8 @@ const Home = () => {
         validationSchema={validationSchema}
         onSubmit={(values, {setSubmitting}) => {
 
+          const {title, description, category_id, paid_event, event_fee, reward, duration, coordinator, email} = values;
+
           const convertTo24Format = (timeIn12) => {
             const hours = timeIn12.split(":")[0];
             const minutes = timeIn12.split(":")[1];
@@ -55,11 +57,26 @@ const Home = () => {
         }
 
           const dateString = `${values.date}T${convertTo24Format(values.time)}`
+          const durationInSec = +values.duration * 3600;
+
+          const mappedValues = {
+            title,
+            description,
+            category_id: parseInt(category_id),
+            paid_event: paid_event === "paid" ? true : false,
+            event_fee: parseInt(event_fee),
+            reward: parseInt(reward),
+            date: dateString,
+            duration: durationInSec,
+            coordinator: {
+              email,
+              id: coordinator,
+            },
+          }
 
           setSubmitting(true);
           //make async call or just console.log the values
-          console.log("SUBMITING", values);
-          console.log("DATESTRING", dateString)
+          console.log("SUBMITING", mappedValues);
           setSubmitting(false);
         }}>{({
           values,

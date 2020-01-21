@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Home from "./views/Home";
@@ -10,8 +11,14 @@ class App extends Component {
     return (
       <>
       <Header/>
-      <Home />
-      {/* <Success/> */}
+      {/* <BrowserRouter>
+      <Switch>
+        <Route path="/" componet={Home}/>
+        <Route path="/success" componet={Success}/>
+      </Switch> */}
+        <Home />
+        {/* <Success/> */}
+      {/* </BrowserRouter> */}
     </>
     )
   }
