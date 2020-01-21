@@ -8,10 +8,10 @@ const CustomSelectInput = ({inputLabel, placeholder, optionValues, ...props}) =>
 
     return (
         <SelectContaniner>
-            <SelectLabel color={hasError ? "red": null}>
+            <SelectLabel color={hasError ? "red" : null}>
                 {inputLabel.toUpperCase()}
             </SelectLabel>
-            <Field as={Select} {...field}>
+            <Field as={Select} {...field} border={hasError ? "1px solid red" : null}>
                 <option value="">{placeholder}</option>
                 {optionValues.map(value => <option key={value.id} value={value.id}>{value.name} {value.lastname}</option>)}
             </Field>

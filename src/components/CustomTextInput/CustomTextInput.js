@@ -14,7 +14,6 @@ const CustomTextInput = ({inputLabel, type, placeholder, ...props}) => {
             </InputLabel>
             <Field placeholder={placeholder} border={hasError ? "1px solid red": null} type={type} as={Input} {...field}/>
             {hasError ? <InputError>{meta.error}</InputError> : null}
-            
         </InputContaniner>
     );
 }

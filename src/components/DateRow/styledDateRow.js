@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const RadioGroupContaniner = styled.div`
+const InputContaniner = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   padding: 10px 0;
 `;
-const RadioGroupLabel = styled.div`
+const InputLabel = styled.div`
     width: 15%;
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@ const RadioGroupLabel = styled.div`
     color: ${props => props.color || '#173F5F'};
 `;
 
-const RadioGroupError = styled.div`
+const InputError = styled.div`
     margin-left: 25px;
     padding: 6px;
     height: 20px;
@@ -40,15 +40,29 @@ const RadioGroupError = styled.div`
   }
 `;
 
-const Input = styled.input`
-    width: 10%;
-    opacity: 0.7;
-    height: 30px;
-    border-radius: 3px;
-    border: ${props => props.border || '1px solid #ccc'};
-    background-color: #fff;
-    padding: 5px 8px;
-    margin: 0 10px 0 20px;
+const InputDate = styled.input`
+  width: 25%;
+  opacity: 0.7;
+  height: 30px;
+  border-radius: 3px;
+  border: ${props => props.border || '1px solid #ccc'};
+  background-color: #fff;
+  padding: 5px 8px;
+  margin-right: 20px;
+  font-size: 16px;
 `;
 
-export { RadioGroupContaniner, RadioGroupLabel, RadioGroupError, Input };
+const InputTime = styled.input`
+  width: 10%;
+  opacity: 0.7;
+  height: 30px;
+  border-radius: 3px;
+  border: ${props => props.border || '1px solid #ccc'};
+  background-color: #fff;
+  padding: 5px 8px;
+  margin: 0 20px;
+  font-size: 16px;
+`;
+
+
+export { InputContaniner, InputLabel, InputError, InputDate, InputTime };

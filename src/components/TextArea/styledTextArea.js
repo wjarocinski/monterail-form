@@ -5,6 +5,7 @@ const TextAreaContaniner = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 0;
+  margin-bottom: 10px;
 `;
 const TextAreaLabel = styled.div`
     width: 15%;
@@ -41,7 +42,7 @@ const TextAreaError = styled.div`
 `;
 
 const sTextArea = styled.textarea`
-  width: 60%;
+  width: 100%;
   opacity: 0.7;
   font-size: 14px;
   border-radius: 3px;
@@ -50,4 +51,17 @@ const sTextArea = styled.textarea`
   padding: 5px 8px;
 `;
 
-export { TextAreaContaniner, TextAreaLabel, TextAreaError, sTextArea };
+const CharInfoLabel = styled.div`
+  position: absolute;
+  font-size: 12px;
+  opacity: 0.7;
+  top: 145px;
+  left: 5px;
+  color: ${props => props.color || "black"};
+`;
+const TextAreaAndInfoContainer = styled.div`
+  position: relative;
+  width: 60%;
+`;
+
+export { TextAreaContaniner, TextAreaLabel, TextAreaError, sTextArea, CharInfoLabel, TextAreaAndInfoContainer };

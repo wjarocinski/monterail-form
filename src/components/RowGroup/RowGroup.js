@@ -1,22 +1,25 @@
 import React from 'react';
-import { useField } from "formik";
-import { RadioGroupContaniner, RadioGroupLabel, RadioGroupError, RadioButton } from './styledRowGroup';
+import { useField, Field } from "formik";
 
-const RowGroup = ({radioGroupLabel, children, ...props}) => {
+import Radio from "../Radio/Radio";
+import { RadioGroupContaniner, RadioGroupLabel, Input} from './styledRowGroup';
+
+const RowGroup = ({ values, groupLabel, feeName, ...props}) => {
     const [field, meta] = useField(props);
 
+    const isPaid = values && values.paid_event === "paid";
     const hasError = meta.touched && meta.error;
 
-    // return (
-
-        // <RadioGroupContaniner>
-        //     <RadioGroupLabel color={hasError ? "red": null}>
-        //         {radioGroupLabel.toUpperCase()}
-        //     </RadioGroupLabel>
-        //     {children}
-        //     {/* <Field placeholder={placeholder} border={hasError ? "1px solid red": null} type="radio" as={RadioButton} {...field}/> */}
-        //     {hasError ? <RadioGroupError>{meta.error}</RadioGroupError> : null}
-        // </RadioGroupContaniner>
-    // );
+    return (
+        <RadioGroupContaniner>
+            <RadioGroupLabel>
+                {groupLabel.toUpperCase()}
+            </RadioGroupLabel>
+            <Radio {...field} radioLabel="Free event" value="free" {...props}/>
+            <Radio {...field} radioLabel="Paid event" value="paid" {...props}/>
+            {isPaid ? <Field placeholder="Fee" border={hasError ? "1px solid red": null} name={feeName} as={Input} /> : null}
+            {isPaid ? "$" : null}
+        </RadioGroupContaniner>
+    );
 }
 export default RowGroup;

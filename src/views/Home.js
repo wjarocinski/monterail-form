@@ -9,24 +9,28 @@ import FormTile from "../components/FormTile/FormTile";
 import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput";
 import TextArea from "../components/TextArea/TextArea";
 import InputWithAnnotation from "../components/InputWithAnnotation/InputWithAnnotation";
+import DateRow from "../components/DateRow/DateRow";
 
 import { Form, Button } from "../themes";
-import Radio from "../components/Radio/Radio";
 import RowGroup from "../components/RowGroup/RowGroup";
+import { useState } from "react";
+
+
+
+const today = new Date();
+const formattedDate = today.toISOString().slice(0, 10);
 
 const initialValues = {
-    //About
     title: "", 
     description: "", 
     category_id: "",
-    paid_event: false,
+    paid_event: "free",
     event_fee: "",
     reward: "",
-    //Coordinator 
     coordinator: "",
     email: "",
-    //When
-    date: "",
+    date: formattedDate,
+    timeFormat: "am",
     duration: ""
   };
 
@@ -43,10 +47,6 @@ const Home = () => {
         }}>{({
           values,
           isSubmitting,
-          touched,
-          errors,
-          handleChange,
-          handleBlur,
           handleSubmit
         }) => (
             <Form onSubmit={handleSubmit}>
@@ -54,9 +54,7 @@ const Home = () => {
                 <CustomTextInput inputLabel="Title *" name="title" placeholder="Make it short and clear" />
                 <TextArea textAreaLabel="Description" name="description" placeholder="Write about your event, be creative"/>
                 <CustomSelectInput inputLabel="Category" name="category_id" placeholder="Select category (skills, interests, locations)" optionValues={categories}/>
-                <Radio name="paid_event" radioLabel="Free event" value="free"/>
-                <Radio name="paid_event" radioLabel="Paid event" value="paid"/>
-
+                <RowGroup name="paid_event" groupLabel="Payment" values={values}  feeName="event_fee"/>
                 <InputWithAnnotation inputLabel="Reward" name="reward" placeholder="Number" annotation="reward points for attendance"/>
             </FormTile>
             <FormTile tileName="Coordinator">
@@ -64,7 +62,8 @@ const Home = () => {
                 <CustomTextInput inputLabel="Email" placeholder="Email" name="email" type="email"/>
             </FormTile>
             <FormTile tileName="When">
-                <CustomTextInput inputLabel="Starts On" name="date" type="date" />
+                {/* <CustomTextInput inputLabel="Starts On" name="date" type="date" /> */}
+                <DateRow inputLabel="Starts on" name="date"/>
                 <InputWithAnnotation inputLabel="Duration" name="duration" placeholder="Number" annotation="hour"/>
             </FormTile>
             <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>
