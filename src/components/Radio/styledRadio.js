@@ -1,56 +1,38 @@
 import styled from 'styled-components';
 
-const RadioGroupContaniner = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-`;
-const RadioGroupLabel = styled.div`
-    width: 15%;
-    display: flex;
-    align-items: center;
-    opacity: 0.7;
-    color: ${props => props.color || '#173F5F'};
-`;
-
-const RadioGroupError = styled.div`
-    margin-left: 25px;
-    padding: 6px;
-    height: 20px;
-    position: relative;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    border: 1px solid red;
-    border-radius: 3px;
-    background-color: red;
-    opacity: 0.5;
-    color: white;
-    ::after {
-      content:"";
-      border-color: transparent red transparent transparent;
-      border-style:solid;
-      border-width:10px;
-      width:0;
-      height:0;
-      position: absolute;
-      bottom: 5px;
-      left: -18px
-  }
-`;
-
 const RadioButton = styled.input`
-
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: 12px;
+  margin-right: 10px;
 `;
+
+// const RadioSpan = styled.span`
+//   position: absolute;
+//   top: 16px;
+//   left: 0;
+//   height: 25px;
+//   width: 25px;
+//   background-color: #eee;
+//   border-radius: 50%;
+
+//   :after {
+//     content: "";
+//     position: absolute;
+//     display: none;
+//   }
+// `;
 
 const RadioLabel = styled.p`
-  font-size: 16px;
+  font-size: 18px;
   color: black;
 `;
 
 const RadioContainer = styled.div`
   display: flex;
+  margin-right: 20px;
+  // position: relative;
 `;
 
-export { RadioGroupContaniner, RadioGroupLabel, RadioGroupError, RadioButton, RadioLabel, RadioContainer };
+export { RadioButton, RadioLabel, RadioContainer };

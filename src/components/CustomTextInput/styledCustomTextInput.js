@@ -16,7 +16,7 @@ const InputLabel = styled.div`
 
 const InputError = styled.div`
     margin-left: 25px;
-    padding: 6px;
+    padding: 8px;
     height: 20px;
     position: relative;
     font-size: 15px;
@@ -35,7 +35,7 @@ const InputError = styled.div`
       width:0;
       height:0;
       position: absolute;
-      bottom: 5px;
+      bottom: 7px;
       left: -18px
   }
 `;
@@ -48,6 +48,7 @@ const Input = styled.input`
   border: ${props => props.border || '1px solid #ccc'};
   background-color: #fff;
   padding: 5px 8px;
+  font-size: 16px;
 `;
 
 export { InputContaniner, InputLabel, InputError, Input };

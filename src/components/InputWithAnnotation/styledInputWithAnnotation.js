@@ -48,9 +48,10 @@ const InputShort = styled.input`
   border: ${props => props.border || '1px solid #ccc'};
   background-color: #fff;
   padding: 5px 8px;
+  font-size: 16px;
 `;
 const Annotation = styled.p`
-  font-size: 16px;
+  font-size: 18px;
   padding: 10px;
 `;
 

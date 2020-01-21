@@ -2,13 +2,15 @@ import React from 'react';
 import { useField, Field } from "formik";
 
 import Radio from "../Radio/Radio";
-import { RadioGroupContaniner, RadioGroupLabel, Input} from './styledRowGroup';
+import { RadioGroupContaniner, RadioGroupLabel, Input, FeeError } from './styledRowGroup';
 
-const RowGroup = ({ values, groupLabel, feeName, ...props}) => {
+const RowGroup = ({ values, errors, touched, groupLabel, feeName, ...props}) => {
     const [field, meta] = useField(props);
 
     const isPaid = values && values.paid_event === "paid";
     const hasError = meta.touched && meta.error;
+
+    const isFeeRequired = errors.event_fee && touched.event_fee ? errors.event_fee : null;
 
     return (
         <RadioGroupContaniner>
@@ -17,8 +19,9 @@ const RowGroup = ({ values, groupLabel, feeName, ...props}) => {
             </RadioGroupLabel>
             <Radio {...field} radioLabel="Free event" value="free" {...props}/>
             <Radio {...field} radioLabel="Paid event" value="paid" {...props}/>
-            {isPaid ? <Field placeholder="Fee" border={hasError ? "1px solid red": null} name={feeName} as={Input} /> : null}
+            {isPaid ? <Field placeholder="Fee" border={isFeeRequired ? "1px solid red": null} name={feeName} as={Input} /> : null}
             {isPaid ? "$" : null}
+            {isFeeRequired ? <FeeError>{errors.event_fee}</FeeError>: null}
         </RadioGroupContaniner>
     );
 }

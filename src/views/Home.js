@@ -13,12 +13,8 @@ import DateRow from "../components/DateRow/DateRow";
 
 import { Form, Button } from "../themes";
 import RowGroup from "../components/RowGroup/RowGroup";
-import { useState } from "react";
-
-
 
 const today = new Date();
-const formattedDate = today.toISOString().slice(0, 10);
 
 const initialValues = {
     title: "", 
@@ -29,10 +25,13 @@ const initialValues = {
     reward: "",
     coordinator: "",
     email: "",
-    date: formattedDate,
+    date: today,
+    time: "",
     timeFormat: "am",
     duration: ""
-  };
+};
+
+  
 
 const Home = () => {
     return (
@@ -40,21 +39,41 @@ const Home = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values, {setSubmitting}) => {
+
+          const convertTo24Format = (timeIn12) => {
+            const hours = timeIn12.split(":")[0];
+            const minutes = timeIn12.split(":")[1];
+        
+            if(values.timeFormat === "am" && +hours === 12){
+                return `00:${minutes}`;
+            } else if(values.timeFormat === "am" && +hours < 12){
+                return `${hours}:${minutes}`
+            } else {
+                const hoursIn12Format = +hours + 12;
+                return `${hoursIn12Format}:${minutes}`;
+            }
+        }
+
+          const dateString = `${values.date}T${convertTo24Format(values.time)}`
+
           setSubmitting(true);
           //make async call or just console.log the values
-          console.log(values);
+          console.log("SUBMITING", values);
+          console.log("DATESTRING", dateString)
           setSubmitting(false);
         }}>{({
           values,
           isSubmitting,
-          handleSubmit
+          handleSubmit, 
+          errors,
+          touched
         }) => (
             <Form onSubmit={handleSubmit}>
             <FormTile tileName="About">
                 <CustomTextInput inputLabel="Title *" name="title" placeholder="Make it short and clear" />
                 <TextArea textAreaLabel="Description" name="description" placeholder="Write about your event, be creative"/>
                 <CustomSelectInput inputLabel="Category" name="category_id" placeholder="Select category (skills, interests, locations)" optionValues={categories}/>
-                <RowGroup name="paid_event" groupLabel="Payment" values={values}  feeName="event_fee"/>
+                <RowGroup name="paid_event" groupLabel="Payment" values={values}  feeName="event_fee" errors={errors} touched={touched} />
                 <InputWithAnnotation inputLabel="Reward" name="reward" placeholder="Number" annotation="reward points for attendance"/>
             </FormTile>
             <FormTile tileName="Coordinator">
@@ -62,8 +81,7 @@ const Home = () => {
                 <CustomTextInput inputLabel="Email" placeholder="Email" name="email" type="email"/>
             </FormTile>
             <FormTile tileName="When">
-                {/* <CustomTextInput inputLabel="Starts On" name="date" type="date" /> */}
-                <DateRow inputLabel="Starts on" name="date"/>
+                <DateRow inputLabel="Starts on" name="date" values={values}/>
                 <InputWithAnnotation inputLabel="Duration" name="duration" placeholder="Number" annotation="hour"/>
             </FormTile>
             <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>

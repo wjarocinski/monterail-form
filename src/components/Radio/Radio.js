@@ -3,7 +3,7 @@ import { useField, Field } from "formik";
 import { RadioButton, RadioLabel, RadioContainer } from './styledRadio';
 
 const Radio = ({ radioLabel, value, ...props}) => {
-    const [field, meta] = useField(props);
+    const [field] = useField(props);
 
     return (
         <RadioContainer>

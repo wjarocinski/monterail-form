@@ -16,8 +16,8 @@ const TextAreaLabel = styled.div`
 `;
 
 const TextAreaError = styled.div`
-    margin-left: 25px;
-    padding: 6px;
+    margin-left: 40px;
+    padding: 8px;
     height: 20px;
     position: relative;
     font-size: 15px;
@@ -36,7 +36,7 @@ const TextAreaError = styled.div`
       width:0;
       height:0;
       position: absolute;
-      bottom: 5px;
+      bottom: 7px;
       left: -18px
   }
 `;
@@ -44,7 +44,7 @@ const TextAreaError = styled.div`
 const sTextArea = styled.textarea`
   width: 100%;
   opacity: 0.7;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 3px;
   border: ${props => props.border || '1px solid #ccc'};
   background-color: #fff;
@@ -55,7 +55,7 @@ const CharInfoLabel = styled.div`
   position: absolute;
   font-size: 12px;
   opacity: 0.7;
-  top: 145px;
+  top: 168px;
   left: 5px;
   color: ${props => props.color || "black"};
 `;

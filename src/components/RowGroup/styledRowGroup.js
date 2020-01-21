@@ -51,4 +51,30 @@ const Input = styled.input`
     margin: 0 10px 0 20px;
 `;
 
-export { RadioGroupContaniner, RadioGroupLabel, RadioGroupError, Input };
+const FeeError = styled.div`
+    margin-left: 25px;
+    padding: 6px;
+    height: 20px;
+    position: relative;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+    border-radius: 3px;
+    background-color: red;
+    opacity: 0.5;
+    color: white;
+    ::after {
+      content:"";
+      border-color: transparent red transparent transparent;
+      border-style:solid;
+      border-width:10px;
+      width:0;
+      height:0;
+      position: absolute;
+      bottom: 5px;
+      left: -18px
+  }
+`;
+
+export { RadioGroupContaniner, RadioGroupLabel, RadioGroupError, Input, FeeError };
