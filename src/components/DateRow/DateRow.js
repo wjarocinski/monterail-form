@@ -9,32 +9,21 @@ const DateRow = ({values, inputLabel, timeName, dateName, placeholder, ...props}
 
     const today = new Date();
 
-    const currentDateFormatted = meta.initialValue.toISOString().slice(0, 10);
-    const currentTimeFormatted = meta.initialValue.toLocaleString().slice(12, 17);
-    // const currentTimeFormatted = "13:14";
+    const currentDateFormatted = today.toISOString().slice(0, 10);
+    // const currentTimeFormatted = today.toLocaleString().slice(12, 17);
+    const currentTimeFormatted = "13:10";
 
-    const pickedTime = values.time;
     const pickedDate = values.date;
 
 
     const isPickedDateBigger = pickedDate > currentDateFormatted;
 
-    //converting 24h to 12h
     const isAm = values.timeFormat === "am";
     const timeConvertedTo24 = isAm ? currentTimeFormatted : currentTimeFormatted + 12;
 
     const isCurrentTimePastNoon = currentTimeFormatted > "12:00";
-    console.log({pickedDate})
-    console.log({currentDateFormatted})
 
-    console.log({isPickedDateBigger})
-    console.log({isCurrentTimePastNoon})
-
-    const shouldAMBeDisabled = isPickedDateBigger && isCurrentTimePastNoon;
-    const gownojebane = !shouldAMBeDisabled;
-
-    console.log({shouldAMBeDisabled})
-    console.log({gownojebane})
+    const shouldAMBeDisabled = pickedDate ? !(isPickedDateBigger && isCurrentTimePastNoon) : false;
 
 
     const convertTo12Format = (timeIn24) => {
@@ -48,19 +37,19 @@ const DateRow = ({values, inputLabel, timeName, dateName, placeholder, ...props}
         }
     }
 
-    const convertTo24Format = (timeIn12) => {
-        const hours = timeIn12.split(":")[0];
-        const minutes = timeIn12.split(":")[1];
+    // const convertTo24Format = (timeIn12) => {
+    //     const hours = timeIn12.split(":")[0];
+    //     const minutes = timeIn12.split(":")[1];
 
-        if(values.timeFormat === "am" && +hours === 12){
-            return `00:${minutes}`;
-        } else if(values.timeFormat === "am" && +hours < 12){
-            return `${hours}:${minutes}`
-        } else {
-            const hoursIn12Format = +hours + 12;
-            return `${hoursIn12Format}:${minutes}`;
-        }
-    }
+    //     if(values.timeFormat === "am" && +hours === 12){
+    //         return `00:${minutes}`;
+    //     } else if(values.timeFormat === "am" && +hours < 12){
+    //         return `${hours}:${minutes}`
+    //     } else {
+    //         const hoursIn12Format = +hours + 12;
+    //         return `${hoursIn12Format}:${minutes}`;
+    //     }
+    // }
 
 
     return (
@@ -82,10 +71,9 @@ const DateRow = ({values, inputLabel, timeName, dateName, placeholder, ...props}
                 border={hasError ? "1px solid red": null} 
                 as={InputTime}
                 min={isPickedDateBigger ? "01:00" : isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted): currentTimeFormatted}
-                // min="01:00"
                 max="12:59"
             />
-            <Radio name="timeFormat" radioLabel="AM" value="am" disabled={gownojebane}/>
+            <Radio name="timeFormat" radioLabel="AM" value="am" disabled={shouldAMBeDisabled}/>
             <Radio name="timeFormat" radioLabel="PM" value="pm"/>
             {hasError ? <InputError>{meta.error}</InputError> : null}
         </InputContaniner>

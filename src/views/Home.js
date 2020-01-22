@@ -14,8 +14,6 @@ import RowGroup from "../components/RowGroup/RowGroup";
 
 import { Form, Button } from "../themes";
 
-const today = new Date();
-
 const initialValues = {
     title: "", 
     description: "", 
@@ -25,13 +23,11 @@ const initialValues = {
     reward: "",
     coordinator: 3,
     email: "",
-    date: today,
+    date: "",
     time: "",
     timeFormat: "am",
     duration: ""
 };
-
-  
 
 const Home = (props) => {
     return (

@@ -41,7 +41,7 @@ const InputError = styled.div`
 `;
 
 const InputDate = styled.input`
-  width: 25%;
+  width: 20%;
   opacity: 0.7;
   height: 30px;
   border-radius: 3px;

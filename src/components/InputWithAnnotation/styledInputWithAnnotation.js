@@ -41,7 +41,7 @@ const InputError = styled.div`
 `;
 
 const InputShort = styled.input`
-  width: 10%;
+  width: 7%;
   opacity: 0.7;
   height: 30px;
   border-radius: 3px;
