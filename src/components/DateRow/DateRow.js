@@ -7,21 +7,35 @@ const DateRow = ({values, inputLabel, timeName, dateName, placeholder, ...props}
     const [field, meta] = useField(props);
     const hasError = meta.touched && meta.error;
 
+    const today = new Date();
+
     const currentDateFormatted = meta.initialValue.toISOString().slice(0, 10);
     const currentTimeFormatted = meta.initialValue.toLocaleString().slice(12, 17);
+    // const currentTimeFormatted = "13:14";
 
     const pickedTime = values.time;
     const pickedDate = values.date;
 
-    const isPickedDateBigger = pickedDate > currentDateFormatted ? true : false;
+
+    const isPickedDateBigger = pickedDate > currentDateFormatted;
 
     //converting 24h to 12h
     const isAm = values.timeFormat === "am";
     const timeConvertedTo24 = isAm ? currentTimeFormatted : currentTimeFormatted + 12;
 
     const isCurrentTimePastNoon = currentTimeFormatted > "12:00";
+    console.log({pickedDate})
+    console.log({currentDateFormatted})
 
-    
+    console.log({isPickedDateBigger})
+    console.log({isCurrentTimePastNoon})
+
+    const shouldAMBeDisabled = isPickedDateBigger && isCurrentTimePastNoon;
+    const gownojebane = !shouldAMBeDisabled;
+
+    console.log({shouldAMBeDisabled})
+    console.log({gownojebane})
+
 
     const convertTo12Format = (timeIn24) => {
         const hours = timeIn24.split(":")[0];
@@ -48,14 +62,6 @@ const DateRow = ({values, inputLabel, timeName, dateName, placeholder, ...props}
         }
     }
 
-    // console.log(convertTo24Format("12:12"))
-    // console.log(convertTo24Format("1:12"))
-    // console.log(convertTo24Format("11:12"))
-    // console.log(convertTo24Format("4:12"))
-    // console.log(convertTo24Format("3:12"))
-    // console.log(convertTo24Format("8:12"))
-    // console.log(convertTo24Format("11:12"))
-
 
     return (
         <InputContaniner>
@@ -70,15 +76,16 @@ const DateRow = ({values, inputLabel, timeName, dateName, placeholder, ...props}
                 min={currentDateFormatted}
             />
             at
-            <Field 
+            <Field
                 name="time"
                 type="time"
                 border={hasError ? "1px solid red": null} 
                 as={InputTime}
                 min={isPickedDateBigger ? "01:00" : isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted): currentTimeFormatted}
+                // min="01:00"
                 max="12:59"
             />
-            <Radio name="timeFormat" radioLabel="AM" value="am"/>
+            <Radio name="timeFormat" radioLabel="AM" value="am" disabled={gownojebane}/>
             <Radio name="timeFormat" radioLabel="PM" value="pm"/>
             {hasError ? <InputError>{meta.error}</InputError> : null}
         </InputContaniner>

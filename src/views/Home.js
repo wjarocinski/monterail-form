@@ -10,9 +10,9 @@ import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput
 import TextArea from "../components/TextArea/TextArea";
 import InputWithAnnotation from "../components/InputWithAnnotation/InputWithAnnotation";
 import DateRow from "../components/DateRow/DateRow";
+import RowGroup from "../components/RowGroup/RowGroup";
 
 import { Form, Button } from "../themes";
-import RowGroup from "../components/RowGroup/RowGroup";
 
 const today = new Date();
 
@@ -21,9 +21,9 @@ const initialValues = {
     description: "", 
     category_id: "",
     paid_event: "free",
-    event_fee: "",
+    event_fee: 0,
     reward: "",
-    coordinator: "",
+    coordinator: 3,
     email: "",
     date: today,
     time: "",
@@ -33,7 +33,7 @@ const initialValues = {
 
   
 
-const Home = () => {
+const Home = (props) => {
     return (
         <Formik
         initialValues={initialValues}
@@ -78,6 +78,7 @@ const Home = () => {
           //make async call or just console.log the values
           console.log("SUBMITING", mappedValues);
           setSubmitting(false);
+          props.history.push("/success");
         }}>{({
           values,
           isSubmitting,
