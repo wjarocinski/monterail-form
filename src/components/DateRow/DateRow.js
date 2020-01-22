@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import { useField, Field } from "formik";
-import { InputContaniner, InputLabel, InputError, InputDate, InputTime } from './styledDateRow';
+import { InputContaniner, InputLabel, InputError, InputDate, InputTime, RequiredMark } from './styledDateRow';
 import Radio from "../Radio/Radio";
 
-const DateRow = ({values, inputLabel, ...props}) => {
+const DateRow = ({requiredMark, values, inputLabel, ...props}) => {
     const [field, meta] = useField(props);
     const hasError = meta.touched && meta.error;
 
@@ -18,13 +18,9 @@ const DateRow = ({values, inputLabel, ...props}) => {
 
     const isPickedDateBigger = pickedDate > currentDateFormatted;
 
-    const isAm = values.timeFormat === "am";
-    const timeConvertedTo24 = isAm ? currentTimeFormatted : currentTimeFormatted + 12;
-
     const isCurrentTimePastNoon = currentTimeFormatted > "12:00";
 
     const shouldAMBeDisabled = pickedDate ? !(isPickedDateBigger && isCurrentTimePastNoon) : false;
-
 
     const convertTo12Format = (timeIn24) => {
         const hours = timeIn24.split(":")[0];
@@ -37,25 +33,11 @@ const DateRow = ({values, inputLabel, ...props}) => {
         }
     }
 
-    // const convertTo24Format = (timeIn12) => {
-    //     const hours = timeIn12.split(":")[0];
-    //     const minutes = timeIn12.split(":")[1];
-
-    //     if(values.timeFormat === "am" && +hours === 12){
-    //         return `00:${minutes}`;
-    //     } else if(values.timeFormat === "am" && +hours < 12){
-    //         return `${hours}:${minutes}`
-    //     } else {
-    //         const hoursIn12Format = +hours + 12;
-    //         return `${hoursIn12Format}:${minutes}`;
-    //     }
-    // }
-
-
     return (
         <InputContaniner>
             <InputLabel color={hasError ? "red": null}>
                 {inputLabel.toUpperCase()}
+                {requiredMark && <RequiredMark> *</RequiredMark>}
             </InputLabel>
             <Field
                 {...field} 
@@ -75,12 +57,13 @@ const DateRow = ({values, inputLabel, ...props}) => {
             />
             <Radio name="timeFormat" radioLabel="AM" value="am" disabled={shouldAMBeDisabled}/>
             <Radio name="timeFormat" radioLabel="PM" value="pm"/>
-            {hasError ? <InputError>{meta.error}</InputError> : null}
+            {hasError && <InputError>{meta.error}</InputError>}
         </InputContaniner>
     );
 }
 
 DateRow.propTypes = {
+    requiredMark: PropTypes.bool,
     values: PropTypes.object.isRequired,
     inputLabel: PropTypes.string.isRequired,
 };

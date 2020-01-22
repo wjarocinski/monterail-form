@@ -6,12 +6,19 @@ const InputContaniner = styled.div`
   align-items: center;
   padding: 10px 0;
 `;
+
 const InputLabel = styled.div`
-    width: 15%;
+    width: 18%;
     display: flex;
     align-items: center;
     opacity: 0.7;
     color: ${props => props.color || '#173F5F'};
+`;
+
+const RequiredMark = styled.p`
+  color: red;
+  font-size: 16px;
+  padding-left: 2px;
 `;
 
 const InputError = styled.div`
@@ -51,4 +58,4 @@ const Input = styled.input`
   font-size: 16px;
 `;
 
-export { InputContaniner, InputLabel, InputError, Input };
+export { InputContaniner, InputLabel, InputError, Input, RequiredMark };

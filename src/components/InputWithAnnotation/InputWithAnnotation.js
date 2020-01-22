@@ -14,8 +14,8 @@ const InputWithAnnotation = ({annotation, inputLabel, placeholder, ...props}) =>
                 {inputLabel.toUpperCase()}
             </InputLabel>
             <Field placeholder={placeholder} border={hasError ? "1px solid red": null} as={InputShort} {...field}/>
-            {hasError ? <InputError>{meta.error}</InputError> : null}
             <Annotation>{annotation}</Annotation>
+            {hasError && <InputError>{meta.error}</InputError>}
         </InputContaniner>
     );
 }

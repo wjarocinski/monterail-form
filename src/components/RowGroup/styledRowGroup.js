@@ -6,8 +6,9 @@ const RadioGroupContaniner = styled.div`
   align-items: center;
   padding: 10px 0;
 `;
+
 const RadioGroupLabel = styled.div`
-    width: 15%;
+    width: 18%;
     display: flex;
     align-items: center;
     opacity: 0.7;

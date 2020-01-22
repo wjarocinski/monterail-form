@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const TileContainer = styled.div`
-  width: 60%;
-  padding: 20px 40px;
+  width: 54%;
+  padding: 20px 30px;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,6 @@ const TileHeader = styled.div`
       margin: 10px 0;
       color: #20639B;
   }
-
 `;
 
 

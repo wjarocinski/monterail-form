@@ -84,18 +84,18 @@ const Home = (props) => {
         }) => (
             <Form onSubmit={handleSubmit}>
             <FormTile tileName="About">
-                <CustomTextInput inputLabel="Title *" name="title" placeholder="Make it short and clear" />
-                <TextArea textAreaLabel="Description" name="description" placeholder="Write about your event, be creative"/>
+                <CustomTextInput inputLabel="Title" requiredMark name="title" placeholder="Make it short and clear" />
+                <TextArea textAreaLabel="Description" requiredMark name="description" placeholder="Write about your event, be creative"/>
                 <CustomSelectInput inputLabel="Category" name="category_id" placeholder="Select category (skills, interests, locations)" optionValues={categories}/>
                 <RowGroup name="paid_event" groupLabel="Payment" values={values}  feeName="event_fee" errors={errors} touched={touched} />
                 <InputWithAnnotation inputLabel="Reward" name="reward" placeholder="Number" annotation="reward points for attendance"/>
             </FormTile>
             <FormTile tileName="Coordinator">
-                <CustomSelectInput inputLabel="Responsible *" name="coordinator" placeholder="Responsible" optionValues={employees}/>
+                <CustomSelectInput inputLabel="Responsible" requiredMark name="coordinator" placeholder="Responsible" optionValues={employees}/>
                 <CustomTextInput inputLabel="Email" placeholder="Email" name="email" type="email"/>
             </FormTile>
             <FormTile tileName="When">
-                <DateRow inputLabel="Starts on" name="date" values={values}/>
+                <DateRow requiredMark inputLabel="Starts on" name="date" values={values}/>
                 <InputWithAnnotation inputLabel="Duration" name="duration" placeholder="Number" annotation="hour"/>
             </FormTile>
             <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>

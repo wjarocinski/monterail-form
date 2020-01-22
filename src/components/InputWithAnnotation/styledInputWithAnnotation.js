@@ -7,7 +7,7 @@ const InputContaniner = styled.div`
   padding: 10px 0;
 `;
 const InputLabel = styled.div`
-    width: 15%;
+    width: 18%;
     display: flex;
     align-items: center;
     opacity: 0.7;
@@ -41,7 +41,7 @@ const InputError = styled.div`
 `;
 
 const InputShort = styled.input`
-  width: 7%;
+  width: 8%;
   opacity: 0.7;
   height: 30px;
   border-radius: 3px;

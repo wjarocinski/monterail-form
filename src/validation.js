@@ -9,11 +9,12 @@ const validationSchema = yup.object({
     event_fee: yup.number()
             .when("paid_event", {
                 is: "paid",
-                then: yup.number().required("Fee is required").min(1),
-                otherwise: yup.number()
+                then: yup.number().required("Event fee is required").typeError("Event fee must be a number").min(1, "Event fee is required"),
+                otherwise: yup.number("Fee must be a number")
             }),
     date: yup.date().required("Date is required!"),
-
+    reward: yup.number().typeError('Reward must be a number'),
+    duration: yup.number().typeError('Duration must be a number')
 })
 
 export default validationSchema;

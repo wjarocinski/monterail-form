@@ -7,11 +7,17 @@ const SelectContaniner = styled.div`
   padding: 10px 0;
 `;
 const SelectLabel = styled.div`
-    width: 15%;
+    width: 18%;
     display: flex;
     align-items: center;
     opacity: 0.7;
     color: ${props => props.color || '#173F5F'};
+`;
+
+const RequiredMark = styled.p`
+  color: red;
+  font-size: 16px;
+  padding-left: 2px;
 `;
 
 const SelectError = styled.div`
@@ -51,4 +57,4 @@ const Select = styled.select`
   font-size: 16px;
 `;
 
-export { SelectContaniner, SelectLabel, SelectError, Select };
+export { SelectContaniner, SelectLabel, SelectError, Select, RequiredMark };

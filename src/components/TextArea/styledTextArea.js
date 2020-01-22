@@ -8,11 +8,17 @@ const TextAreaContaniner = styled.div`
   margin-bottom: 10px;
 `;
 const TextAreaLabel = styled.div`
-    width: 15%;
+    width: 18%;
     display: flex;
     align-items: center;
     opacity: 0.7;
     color: ${props => props.color || '#173F5F'};
+`;
+
+const RequiredMark = styled.p`
+  color: red;
+  font-size: 16px;
+  padding-left: 2px;
 `;
 
 const TextAreaError = styled.div`
@@ -64,4 +70,4 @@ const TextAreaAndInfoContainer = styled.div`
   width: 60%;
 `;
 
-export { TextAreaContaniner, TextAreaLabel, TextAreaError, sTextArea, CharInfoLabel, TextAreaAndInfoContainer };
+export { TextAreaContaniner, TextAreaLabel, TextAreaError, sTextArea, CharInfoLabel, TextAreaAndInfoContainer, RequiredMark };
