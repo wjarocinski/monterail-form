@@ -3,16 +3,16 @@ import { Formik } from "formik"
 import validationSchema from "../validation";
 import categories from "../mocks/categories.json";
 import employees from "../mocks/employes.json";
+import { Form, Button } from "../themes";
 
 import CustomTextInput from "../components/CustomTextInput/CustomTextInput";
-import FormTile from "../components/FormTile/FormTile";
 import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput";
-import TextArea from "../components/TextArea/TextArea";
 import InputWithAnnotation from "../components/InputWithAnnotation/InputWithAnnotation";
+import TextArea from "../components/TextArea/TextArea";
+import FormTile from "../components/FormTile/FormTile";
 import DateRow from "../components/DateRow/DateRow";
 import RowGroup from "../components/RowGroup/RowGroup";
 
-import { Form, Button } from "../themes";
 
 const initialValues = {
     title: "", 
@@ -36,7 +36,7 @@ const Home = (props) => {
         validationSchema={validationSchema}
         onSubmit={(values, {setSubmitting}) => {
 
-          const {title, description, category_id, paid_event, event_fee, reward, duration, coordinator, email} = values;
+          const {title, description, category_id, paid_event, event_fee, reward, duration, coordinator, email, date, time} = values;
 
           const convertTo24Format = (timeIn12) => {
             const hours = timeIn12.split(":")[0];
@@ -52,16 +52,16 @@ const Home = (props) => {
             }
         }
 
-          const dateString = `${values.date}T${convertTo24Format(values.time)}`
-          const durationInSec = +values.duration * 3600;
+          const dateString = `${date}T${convertTo24Format(time)}`
+          const durationInSec = +duration * 3600;
 
           const mappedValues = {
             title,
             description,
-            category_id: parseInt(category_id),
+            category_id: category_id ? parseInt(category_id) : "",
             paid_event: paid_event === "paid" ? true : false,
-            event_fee: parseInt(event_fee),
-            reward: parseInt(reward),
+            event_fee: event_fee ? parseInt(event_fee) : "",
+            reward: reward ? parseInt(reward): "",
             date: dateString,
             duration: durationInSec,
             coordinator: {

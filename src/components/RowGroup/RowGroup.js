@@ -8,16 +8,14 @@ const RowGroup = ({ values, errors, touched, groupLabel, feeName, ...props}) => 
     const [field, meta] = useField(props);
 
     const isPaid = values && values.paid_event === "paid";
-    const hasError = meta.touched && meta.error;
 
     const isFeeRequired = errors.event_fee && touched.event_fee ? errors.event_fee : null;
-
     return (
         <RadioGroupContaniner>
             <RadioGroupLabel>
                 {groupLabel.toUpperCase()}
             </RadioGroupLabel>
-            <Radio {...field} radioLabel="Free event" value="free" {...props}/>
+            <Radio {...field} radioLabel="Free event" value="free" checked={values.paid_event === "free"} {...props}/>
             <Radio {...field} radioLabel="Paid event" value="paid" {...props}/>
             {isPaid ? <Field placeholder="Fee" border={isFeeRequired ? "1px solid red": null} name={feeName} as={Input} /> : null}
             {isPaid ? "$" : null}

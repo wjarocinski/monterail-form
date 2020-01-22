@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const validationSchema = yup.object({
-    title: yup.string().required("Title cannot be empty!").max(10),
+    title: yup.string().required("Title cannot be empty!"),
     description: yup.string().required("Description cannot be empty!").max(140),
     coordinator: yup.number().required("Responsible cannot be empty!"),
     email: yup.string().email("Email must be a valid email"),
