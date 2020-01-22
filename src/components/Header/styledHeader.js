@@ -6,11 +6,13 @@ const HeaderContainer = styled.div`
     background-color: #20639B;
     color: white;
     border-top: 10px solid #173F5F;
-    p {
+    a {
         font-size: 32px;
         font-weight: 100;
-        padding-left: 12%;
+        padding-left: 22%;
         margin: 0;
+        color: white;
+        text-decoration: none;
     }
 `;
 
