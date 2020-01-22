@@ -14,7 +14,7 @@ const CustomSelectInput = ({requiredMark, inputLabel, placeholder, optionValues,
                 {requiredMark && <RequiredMark>*</RequiredMark>}
             </SelectLabel>
             <Field as={Select} {...field} border={hasError ? "1px solid red" : null}>
-                <option value="">{placeholder}</option>
+                {placeholder && <option value="">{placeholder}</option>}
                 {optionValues.map(value => <option key={value.id} value={value.id}>{value.name} {value.lastname}</option>)}
             </Field>
             {hasError ? <SelectError>{meta.error}</SelectError> : null}
@@ -25,7 +25,7 @@ const CustomSelectInput = ({requiredMark, inputLabel, placeholder, optionValues,
 CustomSelectInput.propTypes = {
     requiredMark: PropTypes.bool,
     inputLabel: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
     optionValues: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number,

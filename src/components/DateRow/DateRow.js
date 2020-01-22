@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import { useField, Field } from "formik";
-import { InputContaniner, InputLabel, InputError, InputDate, InputTime, RequiredMark } from './styledDateRow';
+import { InputContaniner, InputLabel, InputError, InputDate, InputTime, RequiredMark, RadioError } from './styledDateRow';
 import Radio from "../Radio/Radio";
 
-const DateRow = ({requiredMark, values, inputLabel, ...props}) => {
+const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) => {
     const [field, meta] = useField(props);
     const hasError = meta.touched && meta.error;
+    const radioError = errors.timeFormat && touched.timeFormat;
 
     const today = new Date();
 
@@ -56,8 +57,9 @@ const DateRow = ({requiredMark, values, inputLabel, ...props}) => {
                 max="12:59"
             />
             <Radio name="timeFormat" radioLabel="AM" value="am" disabled={shouldAMBeDisabled}/>
-            <Radio name="timeFormat" radioLabel="PM" value="pm"/>
+            <Radio name="timeFormat" radioLabel="PM" value="pm" />
             {hasError && <InputError>{meta.error}</InputError>}
+            {radioError && <RadioError>{errors.timeFormat}</RadioError>}
         </InputContaniner>
     );
 }

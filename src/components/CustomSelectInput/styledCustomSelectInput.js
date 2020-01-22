@@ -7,7 +7,7 @@ const SelectContaniner = styled.div`
   padding: 10px 0;
 `;
 const SelectLabel = styled.div`
-    width: 18%;
+    width: 16%;
     display: flex;
     align-items: center;
     opacity: 0.7;

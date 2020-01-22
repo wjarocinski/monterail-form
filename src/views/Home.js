@@ -25,7 +25,7 @@ const initialValues = {
     email: "",
     date: "",
     time: "",
-    timeFormat: "am",
+    timeFormat: "",
     duration: ""
 };
 
@@ -91,11 +91,11 @@ const Home = (props) => {
                 <InputWithAnnotation inputLabel="Reward" name="reward" placeholder="Number" annotation="reward points for attendance"/>
             </FormTile>
             <FormTile tileName="Coordinator">
-                <CustomSelectInput inputLabel="Responsible" requiredMark name="coordinator" placeholder="Responsible" optionValues={employees}/>
+                <CustomSelectInput inputLabel="Responsible" requiredMark name="coordinator" optionValues={employees}/>
                 <CustomTextInput inputLabel="Email" placeholder="Email" name="email" type="email"/>
             </FormTile>
             <FormTile tileName="When">
-                <DateRow requiredMark inputLabel="Starts on" name="date" values={values}/>
+                <DateRow requiredMark inputLabel="Starts on" name="date" errors={errors} touched={touched} values={values}/>
                 <InputWithAnnotation inputLabel="Duration" name="duration" placeholder="Number" annotation="hour"/>
             </FormTile>
             <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>

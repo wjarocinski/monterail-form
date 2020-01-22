@@ -14,7 +14,8 @@ const validationSchema = yup.object({
             }),
     date: yup.date().required("Date is required!"),
     reward: yup.number().typeError('Reward must be a number'),
-    duration: yup.number().typeError('Duration must be a number')
+    duration: yup.number().typeError('Duration must be a number'),
+    timeFormat: yup.string().required("Time must be set to AM or PM")
 })
 
 export default validationSchema;

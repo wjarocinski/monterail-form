@@ -8,7 +8,7 @@ const RadioGroupContaniner = styled.div`
 `;
 
 const RadioGroupLabel = styled.div`
-    width: 18%;
+    width: 16%;
     display: flex;
     align-items: center;
     opacity: 0.7;

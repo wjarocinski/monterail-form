@@ -7,7 +7,7 @@ const InputContaniner = styled.div`
   padding: 10px 0;
 `;
 const InputLabel = styled.div`
-    width: 18%;
+    width: 16%;
     display: flex;
     align-items: center;
     opacity: 0.7;
@@ -69,6 +69,32 @@ const InputTime = styled.input`
   margin: 0 20px;
   font-size: 16px;
 `;
+const RadioError = styled.div`
+  top:50px;
+  right: 180px;
+  padding: 6px;
+  height: 20px;
+  position: relative;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 3px;
+  background-color: red;
+  opacity: 0.5;
+  color: white;
+  ::after {
+    content:"";
+    border-color: transparent transparent red transparent;
+    border-style:solid;
+    border-width:10px;
+    width:0;
+    height:0;
+    position: absolute;
+    bottom: 30px;
+    left: 65px
+  }
+`;
 
 
-export { InputContaniner, InputLabel, InputError, InputDate, InputTime, RequiredMark };
+export { InputContaniner, InputLabel, InputError, InputDate, InputTime, RequiredMark, RadioError };

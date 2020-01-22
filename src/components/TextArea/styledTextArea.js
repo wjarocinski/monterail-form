@@ -8,7 +8,7 @@ const TextAreaContaniner = styled.div`
   margin-bottom: 10px;
 `;
 const TextAreaLabel = styled.div`
-    width: 18%;
+    width: 16%;
     display: flex;
     align-items: center;
     opacity: 0.7;
