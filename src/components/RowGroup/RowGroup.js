@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from "prop-types"; 
 import { useField, Field } from "formik";
 
 import Radio from "../Radio/Radio";
 import { RadioGroupContaniner, RadioGroupLabel, Input, FeeError } from './styledRowGroup';
 
 const RowGroup = ({ values, errors, touched, groupLabel, feeName, ...props}) => {
-    const [field, meta] = useField(props);
+    const [field] = useField(props);
 
     const isPaid = values && values.paid_event === "paid";
 
@@ -23,4 +24,13 @@ const RowGroup = ({ values, errors, touched, groupLabel, feeName, ...props}) => 
         </RadioGroupContaniner>
     );
 }
+
+RowGroup.propTypes = {
+    groupLabel: PropTypes.string.isRequired,
+    feeName: PropTypes.string.isRequired,
+    values: PropTypes.object.isRequired,
+    touched: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
 export default RowGroup;

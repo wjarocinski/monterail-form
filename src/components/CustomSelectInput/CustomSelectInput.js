@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { SelectContaniner, SelectLabel, SelectError, Select } from './styledCustomSelectInput';
 
@@ -19,4 +20,17 @@ const CustomSelectInput = ({inputLabel, placeholder, optionValues, ...props}) =>
         </SelectContaniner>
     );
 }
+
+CustomSelectInput.propTypes = {
+    inputLabel: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    optionValues: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string,
+            lastName: PropTypes.string,
+        })
+    ).isRequired
+};
+
 export default CustomSelectInput;

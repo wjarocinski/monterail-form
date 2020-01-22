@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { TextAreaContaniner, TextAreaLabel, TextAreaError, sTextArea, CharInfoLabel, TextAreaAndInfoContainer } from './styledTextArea';
 
-const TextArea = (props) => {
+const TextArea = ({textAreaLabel, placeholder , ...props}) => {
     const [field, meta] = useField(props);
-    const { textAreaLabel, placeholder } = props;
 
     const hasError = meta.touched && meta.error;
     const usedCharacters = meta.value.length;
@@ -24,4 +24,10 @@ const TextArea = (props) => {
         </TextAreaContaniner>
     );
 }
+
+TextArea.propTypes = {
+    textAreaLabel: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired
+};
+
 export default TextArea;

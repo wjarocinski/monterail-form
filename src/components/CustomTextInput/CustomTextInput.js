@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { InputContaniner, InputLabel, InputError, Input } from './styledCustomTextInput';
 
@@ -17,4 +18,11 @@ const CustomTextInput = ({inputLabel, type, placeholder, ...props}) => {
         </InputContaniner>
     );
 }
+
+CustomTextInput.propTypes = {
+    inputLabel: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    placeholder: PropTypes.string.isRequired,
+};
+
 export default CustomTextInput;

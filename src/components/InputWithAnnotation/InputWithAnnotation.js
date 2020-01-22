@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { InputContaniner, InputLabel, InputError, InputShort, Annotation } from './styledInputWithAnnotation';
 
@@ -18,4 +19,11 @@ const InputWithAnnotation = ({annotation, inputLabel, placeholder, ...props}) =>
         </InputContaniner>
     );
 }
+
+InputWithAnnotation.propTypes = {
+    annotation: PropTypes.string.isRequired,
+    inputLabel: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+};
+
 export default InputWithAnnotation;

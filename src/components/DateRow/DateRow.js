@@ -1,17 +1,17 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { InputContaniner, InputLabel, InputError, InputDate, InputTime } from './styledDateRow';
 import Radio from "../Radio/Radio";
 
-const DateRow = ({values, inputLabel, timeName, dateName, placeholder, ...props}) => {
+const DateRow = ({values, inputLabel, ...props}) => {
     const [field, meta] = useField(props);
     const hasError = meta.touched && meta.error;
 
     const today = new Date();
 
     const currentDateFormatted = today.toISOString().slice(0, 10);
-    // const currentTimeFormatted = today.toLocaleString().slice(12, 17);
-    const currentTimeFormatted = "13:10";
+    const currentTimeFormatted = today.toLocaleString().slice(12, 17);
 
     const pickedDate = values.date;
 
@@ -79,5 +79,11 @@ const DateRow = ({values, inputLabel, timeName, dateName, placeholder, ...props}
         </InputContaniner>
     );
 }
+
+DateRow.propTypes = {
+    values: PropTypes.object.isRequired,
+    inputLabel: PropTypes.string.isRequired,
+};
+
 
 export default DateRow;
