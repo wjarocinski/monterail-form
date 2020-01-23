@@ -6,6 +6,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 

@@ -14,29 +14,26 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
     const today = new Date();
 
     const currentDateFormatted = currentDateFormattedToIso(today);
-    const currentTimeFormatted = currentTimeFormattedToLocale(today);
-    // const currentTimeFormatted = "11:45";
+    // const currentTimeFormatted = currentTimeFormattedToLocale(today);
+    const currentTimeFormatted = "18:59";
 
     const pickedDate = values.date;
 
     const isPickedDateBigger = pickedDate > currentDateFormatted;
 
-    console.log(noon)
+    const isCurrentTimePastNoon = parseInt(currentTimeFormatted) >= parseInt(noon);
 
-    const isCurrentTimePastNoon = currentTimeFormatted > noon;
     const isAmSelected = values.timeFormat === "am";
 
+    const shouldAMBeDisabled = pickedDate ? (isPickedDateBigger || (!isPickedDateBigger && !isCurrentTimePastNoon)) ? false : true : false;
+    // const shouldAMBeDisabled = pickedDate ? (!isPickedDateBigger && isCurrentTimePastNoon): false;
+    
+
     console.log({currentTimeFormatted})
-    console.log({currentDateFormatted})
     console.log({pickedDate})
-    console.log({isPickedDateBigger})
     console.log({isCurrentTimePastNoon})
     console.log({isAmSelected})
-
-    // const shouldAMBeDisabled = pickedDate ? !(isPickedDateBigger && isCurrentTimePastNoon) : false;
-
-    const shouldAMBeDisabled = pickedDate ? (isPickedDateBigger || (!isPickedDateBigger && !isCurrentTimePastNoon)) ? false : true : false;
-
+    console.log({shouldAMBeDisabled})
 
     return (
         <InputContaniner>
@@ -57,15 +54,9 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
                 type="time"
                 border={hasError && errorColor} 
                 as={InputTime}
-                // min={isPickedDateBigger ? 
-                //         minTime : 
-                //             isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted) : 
-                //                 currentTimeFormatted
-                //     }
-                min={isPickedDateBigger ? 
-                    minTime : 
-                        !isAmSelected ? convertTo12Format(currentTimeFormatted) :
-                            isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted) :
+                min={isPickedDateBigger ? minTime :
+                        isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted) :
+                            !isAmSelected ? minTime :
                                 currentTimeFormatted
                 }
                 max={maxTime}

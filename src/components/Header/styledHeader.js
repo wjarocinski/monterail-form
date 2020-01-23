@@ -13,6 +13,7 @@ const HeaderContainer = styled.div`
         margin: 0;
         color: white;
         text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
     }
 `;
 
