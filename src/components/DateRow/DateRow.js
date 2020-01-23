@@ -14,8 +14,7 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
     const today = new Date();
 
     const currentDateFormatted = currentDateFormattedToIso(today);
-    // const currentTimeFormatted = currentTimeFormattedToLocale(today);
-    const currentTimeFormatted = "18:59";
+    const currentTimeFormatted = currentTimeFormattedToLocale(today);
 
     const pickedDate = values.date;
 
@@ -25,8 +24,7 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
 
     const isAmSelected = values.timeFormat === "am";
 
-    const shouldAMBeDisabled = pickedDate ? (isPickedDateBigger || (!isPickedDateBigger && !isCurrentTimePastNoon)) ? false : true : false;
-    // const shouldAMBeDisabled = pickedDate ? (!isPickedDateBigger && isCurrentTimePastNoon): false;
+    const shouldAMBeDisabled = pickedDate ? (!isPickedDateBigger && isCurrentTimePastNoon): false;
     
 
     console.log({currentTimeFormatted})
