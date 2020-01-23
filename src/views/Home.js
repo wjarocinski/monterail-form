@@ -5,6 +5,7 @@ import categories from "../mocks/categories.json";
 import employees from "../mocks/employes.json";
 import { Form, Button } from "../themes";
 import {convertTo24Format} from "../constants/formatters";
+import {secondsInHour, paidValue, freeValue} from "../constants/constants";
 
 import CustomTextInput from "../components/CustomTextInput/CustomTextInput";
 import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput";
@@ -19,7 +20,7 @@ const initialValues = {
     title: "", 
     description: "", 
     category_id: "",
-    paid_event: "free",
+    paid_event: freeValue,
     event_fee: 0,
     reward: "",
     coordinator: 3,
@@ -40,13 +41,13 @@ const Home = (props) => {
           const {title, description, category_id, paid_event, event_fee, reward, duration, coordinator, email, date, time, timeFormat} = values;
 
           const dateString = `${date}T${convertTo24Format(time, timeFormat)}`
-          const durationInSec = +duration * 3600;
+          const durationInSec = +duration * secondsInHour;
 
           const mappedValues = {
             title,
             description,
             category_id: category_id ? parseInt(category_id) : "",
-            paid_event: paid_event === "paid" ? true : false,
+            paid_event: paid_event === paidValue ? true : false,
             event_fee: event_fee ? parseInt(event_fee) : "",
             reward: reward ? parseInt(reward): "",
             date: dateString,

@@ -15,14 +15,28 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
 
     const currentDateFormatted = currentDateFormattedToIso(today);
     const currentTimeFormatted = currentTimeFormattedToLocale(today);
+    // const currentTimeFormatted = "11:45";
 
     const pickedDate = values.date;
 
     const isPickedDateBigger = pickedDate > currentDateFormatted;
 
-    const isCurrentTimePastNoon = currentTimeFormatted > noon;
+    console.log(noon)
 
-    const shouldAMBeDisabled = pickedDate ? !(isPickedDateBigger && isCurrentTimePastNoon) : false;
+    const isCurrentTimePastNoon = currentTimeFormatted > noon;
+    const isAmSelected = values.timeFormat === "am";
+
+    console.log({currentTimeFormatted})
+    console.log({currentDateFormatted})
+    console.log({pickedDate})
+    console.log({isPickedDateBigger})
+    console.log({isCurrentTimePastNoon})
+    console.log({isAmSelected})
+
+    // const shouldAMBeDisabled = pickedDate ? !(isPickedDateBigger && isCurrentTimePastNoon) : false;
+
+    const shouldAMBeDisabled = pickedDate ? (isPickedDateBigger || (!isPickedDateBigger && !isCurrentTimePastNoon)) ? false : true : false;
+
 
     return (
         <InputContaniner>
@@ -43,10 +57,20 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
                 type="time"
                 border={hasError && errorColor} 
                 as={InputTime}
-                min={isPickedDateBigger ? minTime : isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted): currentTimeFormatted}
+                // min={isPickedDateBigger ? 
+                //         minTime : 
+                //             isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted) : 
+                //                 currentTimeFormatted
+                //     }
+                min={isPickedDateBigger ? 
+                    minTime : 
+                        !isAmSelected ? convertTo12Format(currentTimeFormatted) :
+                            isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted) :
+                                currentTimeFormatted
+                }
                 max={maxTime}
             />
-            <Radio name="timeFormat" radioLabel="AM" value="am" disabled={shouldAMBeDisabled}/>
+            <Radio name="timeFormat" radioLabel="AM" value="am" disabled={shouldAMBeDisabled} />
             <Radio name="timeFormat" radioLabel="PM" value="pm" />
             {hasError && <InputError>{meta.error}</InputError>}
             {radioError && <RadioError>{errors.timeFormat}</RadioError>}
