@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 // Forms, inputs, buttons
 
+export const errorTheme = { 
+  border: "1px solid red",
+  color: "red"
+}
+
 export const Form = styled.form`
   display: flex;
   justify-content: center;

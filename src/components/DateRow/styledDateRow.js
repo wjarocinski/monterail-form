@@ -51,7 +51,7 @@ const InputDate = styled.input`
   opacity: 0.7;
   height: 30px;
   border-radius: 3px;
-  border: ${props => props.border || '1px solid #ccc'};
+  border: 1px solid ${props => props.border || '#ccc'};
   background-color: #fff;
   padding: 5px 8px;
   margin-right: 20px;
@@ -63,7 +63,7 @@ const InputTime = styled.input`
   opacity: 0.7;
   height: 30px;
   border-radius: 3px;
-  border: ${props => props.border || '1px solid #ccc'};
+  border: 1px solid ${props => props.border || '#ccc'};
   background-color: #fff;
   padding: 5px 8px;
   margin: 0 20px;

@@ -1,9 +1,11 @@
 import React from "react";
 import { Formik } from "formik"
+import { ThemeProvider } from "styled-components";
 import validationSchema from "../validation";
 import categories from "../mocks/categories.json";
 import employees from "../mocks/employes.json";
-import { Form, Button } from "../themes";
+import { Form, Button, errorTheme } from "../themes";
+import {convertTo24Format} from "../constants/formatter";
 
 import CustomTextInput from "../components/CustomTextInput/CustomTextInput";
 import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput";
@@ -36,23 +38,9 @@ const Home = (props) => {
         validationSchema={validationSchema}
         onSubmit={(values, {setSubmitting}) => {
 
-          const {title, description, category_id, paid_event, event_fee, reward, duration, coordinator, email, date, time} = values;
+          const {title, description, category_id, paid_event, event_fee, reward, duration, coordinator, email, date, time, timeFormat} = values;
 
-          const convertTo24Format = (timeIn12) => {
-            const hours = timeIn12.split(":")[0];
-            const minutes = timeIn12.split(":")[1];
-        
-            if(values.timeFormat === "am" && +hours === 12){
-                return `00:${minutes}`;
-            } else if(values.timeFormat === "am" && +hours < 12){
-                return `${hours}:${minutes}`
-            } else {
-                const hoursIn12Format = +hours + 12;
-                return `${hoursIn12Format}:${minutes}`;
-            }
-        }
-
-          const dateString = `${date}T${convertTo24Format(time)}`
+          const dateString = `${date}T${convertTo24Format(time, timeFormat)}`
           const durationInSec = +duration * 3600;
 
           const mappedValues = {
@@ -82,6 +70,7 @@ const Home = (props) => {
           errors,
           touched
         }) => (
+          <ThemeProvider theme={errorTheme}>
             <Form onSubmit={handleSubmit}>
             <FormTile tileName="About">
                 <CustomTextInput inputLabel="Title" requiredMark name="title" placeholder="Make it short and clear" />
@@ -100,6 +89,7 @@ const Home = (props) => {
             </FormTile>
             <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>
           </Form>
+          </ThemeProvider>
         )}
       </Formik>
     );

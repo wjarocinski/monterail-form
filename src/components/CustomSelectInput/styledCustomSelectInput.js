@@ -51,7 +51,7 @@ const Select = styled.select`
   opacity: 0.7;
   height: 42px;
   border-radius: 3px;
-  border: ${props => props.border || '1px solid #ccc'};
+  border: 1px solid ${props => props.border || '#ccc'};
   background-color: #fff;
   padding: 5px 8px;
   font-size: 16px;

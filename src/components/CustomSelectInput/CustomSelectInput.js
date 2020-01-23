@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { SelectContaniner, SelectLabel, SelectError, Select, RequiredMark } from './styledCustomSelectInput';
+import {errorColor} from "../../constants/constants";
 
 const CustomSelectInput = ({requiredMark, inputLabel, placeholder, optionValues, ...props}) => {
     const [field, meta] = useField(props);
@@ -9,11 +10,11 @@ const CustomSelectInput = ({requiredMark, inputLabel, placeholder, optionValues,
 
     return (
         <SelectContaniner>
-            <SelectLabel color={hasError ? "red" : null}>
+            <SelectLabel color={hasError ? errorColor : null}>
                 {inputLabel.toUpperCase()}
                 {requiredMark && <RequiredMark>*</RequiredMark>}
             </SelectLabel>
-            <Field as={Select} {...field} border={hasError ? "1px solid red" : null}>
+            <Field as={Select} {...field} border={hasError && errorColor}>
                 {placeholder && <option value="">{placeholder}</option>}
                 {optionValues.map(value => <option key={value.id} value={value.id}>{value.name} {value.lastname}</option>)}
             </Field>

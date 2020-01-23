@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { InputContaniner, InputLabel, InputError, InputDate, InputTime, RequiredMark, RadioError } from './styledDateRow';
+import { errorColor } from "../../constants/constants";
 import Radio from "../Radio/Radio";
 
 const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) => {
@@ -36,13 +37,13 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
 
     return (
         <InputContaniner>
-            <InputLabel color={hasError ? "red": null}>
+            <InputLabel color={hasError ? errorColor : null}>
                 {inputLabel.toUpperCase()}
                 {requiredMark && <RequiredMark> *</RequiredMark>}
             </InputLabel>
             <Field
                 {...field} 
-                border={hasError ? "1px solid red": null} 
+                border={hasError && errorColor} 
                 type="date"
                 as={InputDate}
                 min={currentDateFormatted}
@@ -51,7 +52,7 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
             <Field
                 name="time"
                 type="time"
-                border={hasError ? "1px solid red": null} 
+                border={hasError && errorColor} 
                 as={InputTime}
                 min={isPickedDateBigger ? "01:00" : isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted): currentTimeFormatted}
                 max="12:59"

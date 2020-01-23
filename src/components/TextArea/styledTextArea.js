@@ -52,7 +52,7 @@ const sTextArea = styled.textarea`
   opacity: 0.7;
   font-size: 16px;
   border-radius: 3px;
-  border: ${props => props.border || '1px solid #ccc'};
+  border: 1px solid ${props => props.border || '#ccc'};
   background-color: #fff;
   padding: 5px 8px;
 `;

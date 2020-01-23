@@ -18,7 +18,7 @@ const RowGroup = ({ values, errors, touched, groupLabel, feeName, ...props}) => 
             </RadioGroupLabel>
             <Radio {...field} radioLabel="Free event" value="free" checked={values.paid_event === "free"} {...props}/>
             <Radio {...field} radioLabel="Paid event" value="paid" {...props}/>
-            {isPaid ? <Field placeholder="Fee" border={isFeeRequired ? "1px solid red": null} name={feeName} as={Input} /> : null}
+            {isPaid ? <Field placeholder="Fee" border={isFeeRequired && "1px solid red"} name={feeName} as={Input} /> : null}
             {isPaid ? "$" : null}
             {isFeeRequired && <FeeError>{errors.event_fee}</FeeError>}
         </RadioGroupContaniner>

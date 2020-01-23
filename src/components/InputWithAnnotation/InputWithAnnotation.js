@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { InputContaniner, InputLabel, InputError, InputShort, Annotation } from './styledInputWithAnnotation';
+import { errorColor } from "../../constants/constants";
 
 const InputWithAnnotation = ({annotation, inputLabel, placeholder, ...props}) => {
     const [field, meta] = useField(props);
@@ -10,10 +11,10 @@ const InputWithAnnotation = ({annotation, inputLabel, placeholder, ...props}) =>
 
     return (
         <InputContaniner>
-            <InputLabel color={hasError ? "red": null}>
+            <InputLabel color={hasError ? errorColor : null}>
                 {inputLabel.toUpperCase()}
             </InputLabel>
-            <Field placeholder={placeholder} border={hasError ? "1px solid red": null} as={InputShort} {...field}/>
+            <Field placeholder={placeholder} border={hasError && errorColor} as={InputShort} {...field}/>
             <Annotation>{annotation}</Annotation>
             {hasError && <InputError>{meta.error}</InputError>}
         </InputContaniner>

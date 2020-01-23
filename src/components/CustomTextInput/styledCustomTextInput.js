@@ -12,7 +12,7 @@ const InputLabel = styled.div`
     display: flex;
     align-items: center;
     opacity: 0.7;
-    color: ${props => props.color || '#173F5F'};
+    color: ${props => props.color || "#173F5F"};
 `;
 
 const RequiredMark = styled.p`
@@ -52,7 +52,7 @@ const Input = styled.input`
   opacity: 0.7;
   height: 30px;
   border-radius: 3px;
-  border: ${props => props.border || '1px solid #ccc'};
+  border: 1px solid ${props => props.border || '#ccc'};
   background-color: #fff;
   padding: 5px 8px;
   font-size: 16px;
