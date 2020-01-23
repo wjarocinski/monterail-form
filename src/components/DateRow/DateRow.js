@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { useField, Field } from "formik";
 import { InputContaniner, InputLabel, InputError, InputDate, InputTime, RequiredMark, RadioError } from './styledDateRow';
-import { errorColor } from "../../constants/constants";
+import { errorColor, noon, minTime, maxTime } from "../../constants/constants";
+import { currentDateFormattedToIso, currentTimeFormattedToLocale, convertTo12Format } from "../../constants/formatters";
 import Radio from "../Radio/Radio";
 
 const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) => {
@@ -12,28 +13,16 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
 
     const today = new Date();
 
-    const currentDateFormatted = today.toISOString().slice(0, 10);
-    const currentTimeFormatted = today.toLocaleString().slice(12, 17);
+    const currentDateFormatted = currentDateFormattedToIso(today);
+    const currentTimeFormatted = currentTimeFormattedToLocale(today);
 
     const pickedDate = values.date;
 
-
     const isPickedDateBigger = pickedDate > currentDateFormatted;
 
-    const isCurrentTimePastNoon = currentTimeFormatted > "12:00";
+    const isCurrentTimePastNoon = currentTimeFormatted > noon;
 
     const shouldAMBeDisabled = pickedDate ? !(isPickedDateBigger && isCurrentTimePastNoon) : false;
-
-    const convertTo12Format = (timeIn24) => {
-        const hours = timeIn24.split(":")[0];
-        const minutes = timeIn24.split(":")[1];
-        if(+hours <= 12){
-            return `${hours}:${minutes}`
-        } else {
-            const hoursIn24Format = +hours - 12;
-            return `${hoursIn24Format}:${minutes}`
-        }
-    }
 
     return (
         <InputContaniner>
@@ -54,8 +43,8 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
                 type="time"
                 border={hasError && errorColor} 
                 as={InputTime}
-                min={isPickedDateBigger ? "01:00" : isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted): currentTimeFormatted}
-                max="12:59"
+                min={isPickedDateBigger ? minTime : isCurrentTimePastNoon ? convertTo12Format(currentTimeFormatted): currentTimeFormatted}
+                max={maxTime}
             />
             <Radio name="timeFormat" radioLabel="AM" value="am" disabled={shouldAMBeDisabled}/>
             <Radio name="timeFormat" radioLabel="PM" value="pm" />

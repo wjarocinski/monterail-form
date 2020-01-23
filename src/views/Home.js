@@ -1,11 +1,10 @@
 import React from "react";
 import { Formik } from "formik"
-import { ThemeProvider } from "styled-components";
 import validationSchema from "../validation";
 import categories from "../mocks/categories.json";
 import employees from "../mocks/employes.json";
-import { Form, Button, errorTheme } from "../themes";
-import {convertTo24Format} from "../constants/formatter";
+import { Form, Button } from "../themes";
+import {convertTo24Format} from "../constants/formatters";
 
 import CustomTextInput from "../components/CustomTextInput/CustomTextInput";
 import CustomSelectInput from "../components/CustomSelectInput/CustomSelectInput";
@@ -70,7 +69,6 @@ const Home = (props) => {
           errors,
           touched
         }) => (
-          <ThemeProvider theme={errorTheme}>
             <Form onSubmit={handleSubmit}>
             <FormTile tileName="About">
                 <CustomTextInput inputLabel="Title" requiredMark name="title" placeholder="Make it short and clear" />
@@ -89,7 +87,6 @@ const Home = (props) => {
             </FormTile>
             <Button disbaled={isSubmitting} type="submit">PUBLISH EVENT</Button>
           </Form>
-          </ThemeProvider>
         )}
       </Formik>
     );
