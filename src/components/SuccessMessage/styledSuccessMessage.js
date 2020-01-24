@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const SuccessMessageContainer = styled.div`
-    width: 60%;
+    width: 53%;
     margin: 0 auto;
     padding: 15px 35px;
     margin-top: 50px;
@@ -10,6 +10,7 @@ const SuccessMessageContainer = styled.div`
     border: none;
     border-radius: 3px;
     box-shadow: 0px 0px 3px 2px rgba(180,180,180,1);
+    font-family: Arial, Helvetica, sans-serif;
 `;
 
 const SuccessMessageTitle = styled.p`
@@ -19,7 +20,7 @@ const SuccessMessageTitle = styled.p`
 `;
 
 const SuccessMessageSubtitle = styled.p`
-    font-size: 16px;
+    font-size: 17px;
     color: black;
 `;
 

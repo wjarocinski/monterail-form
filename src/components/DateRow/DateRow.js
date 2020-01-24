@@ -21,17 +21,10 @@ const DateRow = ({requiredMark, touched, errors, values, inputLabel, ...props}) 
     const isPickedDateBigger = pickedDate > currentDateFormatted;
 
     const isCurrentTimePastNoon = parseInt(currentTimeFormatted) >= parseInt(noon);
-
+    
     const isAmSelected = values.timeFormat === "am";
 
     const shouldAMBeDisabled = pickedDate ? (!isPickedDateBigger && isCurrentTimePastNoon): false;
-    
-
-    console.log({currentTimeFormatted})
-    console.log({pickedDate})
-    console.log({isCurrentTimePastNoon})
-    console.log({isAmSelected})
-    console.log({shouldAMBeDisabled})
 
     return (
         <InputContaniner>
